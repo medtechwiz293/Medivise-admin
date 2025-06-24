@@ -10,7 +10,8 @@ import {
   getDocs
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 import {
-  onAuthStateChanged
+  onAuthStateChanged,
+  signOut
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 async function uploadLeaflet() {
@@ -36,6 +37,17 @@ async function uploadLeaflet() {
   fileInput.value = "";
   loadLeaflets();
 }
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+async function getPracticeName(userId) {
+  const docRef = doc(db, "practices", userId);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    return docSnap.data().name;
+  } else {
+    return null;
+  }
+}
 
 async function loadLeaflets() {
   const user = auth.currentUser;
@@ -53,15 +65,50 @@ async function loadLeaflets() {
   });
 }
 
-onAuthStateChanged(auth, (user) => {
+// Add this function to fetch the user's first name
+async function getUserFirstName(userId) {
+  const userDoc = await getDoc(doc(db, "users", userId));
+  if (userDoc.exists()) {
+    return userDoc.data().firstName || null;
+  }
+  return null;
+}
+
+onAuthStateChanged(auth, async (user) => {
   if (user) {
+    console.log("User logged in:", user.uid);
+    const practiceName = await getPracticeName(user.uid);
+    const firstName = await getUserFirstName(user.uid);
+    console.log("Fetched practice name:", practiceName, "First name:", firstName);
+
+    const welcomeElem = document.getElementById("welcomeMessage");
+    if (practiceName && firstName) {
+      welcomeElem.textContent = `Welcome ${firstName}. This is the dashboard for ${practiceName}`;
+    } else if (practiceName) {
+      welcomeElem.textContent = `Welcome to the dashboard for ${practiceName}`;
+    } else {
+      welcomeElem.textContent = "Welcome to your dashboard";
+    }
     loadLeaflets();
   } else {
     window.location.href = "/login.html";
   }
 });
 
+  
+  
+
+// Logout handler
 document.addEventListener("DOMContentLoaded", () => {
   const uploadBtn = document.getElementById("uploadBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
   uploadBtn.addEventListener("click", uploadLeaflet);
+
+  logoutBtn.addEventListener("click", async () => {
+    await signOut(auth);
+    window.location.href = "/login.html";
+  });
 });
+
+window.uploadLeaflet = uploadLeaflet;
