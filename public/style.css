@@ -1,0 +1,272 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  
+  /* Typography */
+  h1, h2, h3 {
+    color: #002855;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    margin-bottom: 1rem;
+    color: #444;
+  }
+  
+  /* Containers */
+  .container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+  
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .full-height {
+    min-height: 100vh;
+  }
+  
+  /* Buttons */
+  button, .btn {
+    font-family: inherit;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary {
+    background-color: #005eb8;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #004a94;
+  }
+  
+  .btn-danger {
+    background-color: #6ea3ff;
+    color: #fff;
+  }
+  
+  .btn-danger:hover {
+    background-color: #412cff;
+  }
+  
+  /* Forms */
+  form {
+    width: 100%;
+  }
+  
+  label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="file"],
+  select {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Form Card */
+  .form-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 420px;
+    margin: 2rem auto;
+  }
+  
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    margin-top: 1rem;
+  }
+  
+  th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  th {
+    background-color: #005eb8;
+    color: white;
+    font-weight: 600;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f4f6f8;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Search Field */
+  input[type="search"] {
+    max-width: 400px;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Cards / Icons */
+  .card--icon {
+    background: #f7f9fc;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .card--icon img {
+    height: 40px;
+    margin-bottom: 1rem;
+  }
+  
+  .card--icon h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #003e74;
+  }
+  
+  .card--icon p {
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+  /* Checklist (Feature Lists) */
+  .checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .checklist li {
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+  }
+  
+  /* Blockquote */
+  blockquote {
+    font-style: italic;
+    color: #333;
+    border-left: 4px solid #ccc;
+    padding-left: 1rem;
+    margin-top: 1rem;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  .footer a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* Modal Styles */
+  .modal {
+    display: none; /* default hidden */
+    position: fixed;
+    z-index: 1000;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal.show {
+    display: flex;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  
+  
+  .modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #002855;
+  }
+  
+  .modal-content .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+  }
+  
+  .modal-content .close:hover {
+    color: #333;
+  }
+  
+  .modal-content form button {
+    margin-right: 0.5rem;
+  }
+  
+  .float-right {
+    float: right;
+  }
+  
+ 
+  
