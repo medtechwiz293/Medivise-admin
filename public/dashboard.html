@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dashboard</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="icon" href="data:,">
 </head>
 <body>
   <h1>Welcome to the Admin Dashboard</h1>
   <p>You’ve successfully signed up and logged in.</p>
+
+  <h2>Upload a Leaflet</h2>
+  <input type="file" id="leafletFile" accept="application/pdf" />
+  <button id="uploadBtn">Upload PDF</button>
+
+  <h3>Uploaded Leaflets</h3>
+  <ul id="leafletList"></ul>
+
+  <!-- ✅ Firebase v9+ Modules -->
+  <script type="module" src="/firebase-init.js"></script>
+  <script type="module" src="/dashboard.js"></script>
 </body>
 </html>
